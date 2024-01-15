@@ -89,9 +89,9 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     WireSprites[cursorPos].fill(colourList[WireList[cursorPos]])
     WireSprites[cursorPos].drawRect(0, 0, 160, 5, 15)
     sprite_list = sprites.allOfKind(SpriteKind.Wire)
-    for (let value of sprite_list) {
-        if (value.top == Math.floor(120 / Ratio) * (cursorPos + 1)) {
-            value.destroy()
+    for (let value2 of sprite_list) {
+        if (value2.top == Math.floor(120 / Ratio) * (cursorPos + 1)) {
+            value2.destroy()
         }
     }
     mySprite2 = sprites.create(WireSprites[cursorPos], SpriteKind.Wire)
@@ -105,6 +105,24 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
     cursorPos = cursorPos % wireCount
     UpdateCursor()
 })
+function _4wire () {
+    redcount = 0
+    for (let value3 of WireList) {
+        if (value3 == 0) {
+            redcount += 1
+        }
+    }
+    if (redcount > 1 && SerialNumber % 2 == 1) {
+        if (WireList[3] == 0) {
+            game.splash("cut wire 4")
+        } else if (WireList[2]) {
+            game.splash("cut wire 3")
+        } else {
+            game.splash("cut wire 2")
+        }
+    }
+}
+let redcount = 0
 let mySprite: Image = null
 let mySprite2: Sprite = null
 let sprite_list: Sprite[] = []
