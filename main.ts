@@ -16,6 +16,17 @@ function startPhase () {
         wireCount = game.askForNumber("# of wires? (3-6)", 1)
     }
 }
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    if (wireCount == 3) {
+    	
+    } else if (wireCount == 4) {
+        _4wire()
+    } else if (wireCount == 5) {
+    	
+    } else {
+    	
+    }
+})
 function InitSerial () {
     SerialNumber = game.askForNumber("Last Digit of Serial Number", 1)
 }
@@ -107,6 +118,8 @@ controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
 })
 function _4wire () {
     redcount = 0
+    yellowCount = 0
+    yellowCount = 0
     for (let value3 of WireList) {
         if (value3 == 0) {
             redcount += 1
@@ -122,6 +135,7 @@ function _4wire () {
         }
     }
 }
+let yellowCount = 0
 let redcount = 0
 let mySprite: Image = null
 let mySprite2: Sprite = null
